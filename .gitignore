@@ -1,7 +1,10 @@
 # See https://docs.github.com/get-started/getting-started-with-git/ignoring-files for more about ignoring files.
 
+# Extra
+_Merge Output
+
 # Environment files
-/src/environments/*
+src/environments/*
 .env
 
 # Compiled output
