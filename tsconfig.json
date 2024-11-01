@@ -11,7 +11,8 @@
       "@services/*": ["app/services/*"],
       "@models/*": ["app/models/*"],
       "@utils/*": ["app/utils/*"],
-      "@assets/*": ["assets/*"]
+      "@assets/*": ["assets/*"],
+      "@store/*": ["app/store/*"]
     },
     "outDir": "./dist/out-tsc",
     "strict": true,

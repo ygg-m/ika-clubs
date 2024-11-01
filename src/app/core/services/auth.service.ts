@@ -1,55 +1,75 @@
-import { inject, Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { Observable, of } from 'rxjs';
-import { switchMap } from 'rxjs/operators';
+import { Injectable, inject } from '@angular/core';
+import {
+  Auth,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+  signInWithPopup,
+  signOut,
+} from '@angular/fire/auth';
+import { Firestore, doc, getDoc, setDoc } from '@angular/fire/firestore';
+import { Observable, from, of, switchMap } from 'rxjs';
 import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private afAuth = inject(AngularFireAuth);
-  private afs = inject(AngularFirestore);
+  private auth = inject(Auth);
+  private firestore = inject(Firestore);
 
-  user$: Observable<User | null>;
+  user$: Observable<User | null> = new Observable((subscriber) => {
+    return onAuthStateChanged(this.auth, (firebaseUser) => {
+      if (firebaseUser) {
+        this.getUserData(firebaseUser.uid).subscribe(subscriber);
+      } else {
+        subscriber.next(null);
+      }
+    });
+  });
 
-  constructor() {
-    this.user$ = this.afAuth.authState.pipe(
-      switchMap((user) => {
-        if (user) {
-          return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
+  googleSignIn() {
+    return from(
+      signInWithPopup(this.auth, new GoogleAuthProvider()).then(
+        async (credential) => {
+          if (credential.user) {
+            const user: User = {
+              id: credential.user.uid,
+              email: credential.user.email!,
+              displayName: credential.user.displayName!,
+              avatarUrl: credential.user.photoURL!,
+              birthdate: new Date(), // Should be collected separately
+              groups: [],
+              participationHistory: [],
+            };
+
+            await this.updateUserData(user);
+            return user;
+          }
+          throw new Error('No user found');
+        }
+      )
+    );
+  }
+
+  signOut() {
+    return from(signOut(this.auth));
+  }
+
+  private getUserData(uid: string): Observable<User> {
+    const userDocRef = doc(this.firestore, `users/${uid}`);
+    return from(getDoc(userDocRef)).pipe(
+      switchMap((docSnap) => {
+        if (docSnap.exists()) {
+          return of(docSnap.data() as User);
         } else {
-          return of(null);
+          throw new Error('User document not found');
         }
       })
     );
   }
 
-  async googleSignIn() {
-    const provider = new firebase.auth.GoogleAuthProvider();
-    const credential = await this.afAuth.signInWithPopup(provider);
-    if (credential.user) {
-      return this.updateUserData(credential.user);
-    }
-  }
-
-  async signOut() {
-    await this.afAuth.signOut();
-  }
-
-  private updateUserData(user: any) {
-    const userRef = this.afs.doc(`users/${user.uid}`);
-
-    const data = {
-      id: user.uid,
-      email: user.email,
-      displayName: user.displayName,
-      avatarUrl: user.photoURL,
-      groups: [],
-      participationHistory: [],
-    };
-
-    return userRef.set(data, { merge: true });
+  private async updateUserData(user: User) {
+    const userRef = doc(this.firestore, `users/${user.id}`);
+    return setDoc(userRef, user, { merge: true });
   }
 }
