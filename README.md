@@ -1,177 +1,161 @@
 # Club Activities Platform
 
-A modern web application for managing and organizing club activities, designed specifically for book clubs, movie clubs, and music appreciation groups. Built with Angular 18 and Firebase.
+A planned web application for managing and organizing club activities, specifically designed for book clubs, movie clubs, and music appreciation groups. This project will be built with Angular 18 and Firebase.
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
-![Angular](https://img.shields.io/badge/Angular-18-red.svg)
-![Firebase](https://img.shields.io/badge/Firebase-Latest-orange.svg)
+## 🎯 Project Vision
 
-## 🌟 Features
+To create a platform where friends can organize and track their cultural activities, making it easy to manage book readings, movie watchings, and music listening sessions. The platform will support both private friend groups and public communities.
 
-- **Multiple Club Types Support**
+## 🌟 Planned Features
 
-  - Book Clubs
-  - Movie Clubs
-  - Music Clubs
-  - Customizable club configurations
+### Core Features
+
+- **User Authentication**
+
+  - Google account integration
+  - User profiles with activity history
+  - Privacy settings
 
 - **Group Management**
 
-  - Create private or public groups
-  - Manage memberships
-  - Unique group identifiers for private access
+  - Private and public groups
+  - Unique group identifiers
+  - Member management
 
-- **Advanced Rating System**
+- **Club Types**
+  - Book Clubs
+    - Reading progress tracking
+    - Chapter-based discussions
+    - Multi-language book titles
+  - Movie Clubs
+    - Individual or group watching options
+    - Watch progress tracking
+    - Streaming service links
+  - Music Clubs
+    - Album/playlist management
+    - Per-track ratings
+    - Duration tracking
 
-  - Cartesian plane rating (Interest vs. Quality)
-  - Traditional numerical ratings
-  - Per-track ratings for music
-  - Historical tracking
+### Rating System
 
-- **Real-time Updates**
+- Cartesian plane rating system (Interest vs. Quality)
+- Traditional numerical ratings for music tracks
+- Historical rating tracking
+- Visual representation of ratings
 
-  - Live rating updates
-  - Progress tracking
-  - Activity feeds
+### Real-time Features
 
-- **Data Visualization**
+- Live updates for ratings and progress
+- Real-time activity feeds
+- Instant notifications
 
-  - Interactive charts
-  - Detailed analytics
-  - Exportable reports
+## 🛠️ Technical Stack
 
-- **Sharing Capabilities**
-  - Deep linking
-  - Rating image generation
-  - Social media integration
+### Frontend
 
-## 📋 Prerequisites
+- Angular 18
+- SCSS
+- Angular Material (planned)
+- NgRx for state management
+
+### Backend
+
+- Firebase
+  - Authentication
+  - Firestore
+  - Realtime Database
+  - Cloud Storage
+  - Cloud Functions
+
+## 📋 Development Plans
+
+### Phase 1
+
+- [ ] Project setup and architecture
+- [ ] Firebase integration
+- [ ] Basic authentication
+- [ ] Group creation and management
+
+### Phase 2
+
+- [ ] Club module development
+- [ ] Rating system implementation
+- [ ] Progress tracking features
+
+### Phase 3
+
+- [ ] Real-time features
+- [ ] Data visualization
+- [ ] Sharing capabilities
+
+## 🚀 Getting Started (Coming Soon)
+
+The project is in the initial planning phase. Setup instructions will be provided once development begins.
+
+### Prerequisites (Planned)
 
 - Node.js (v18.0.0 or higher)
 - npm (v9.0.0 or higher)
 - Angular CLI (v18.0.0)
-- A Firebase account
+- Firebase account
 
-## 🚀 Getting Started
+## 🤝 Want to Contribute?
 
-1. **Clone the repository**
+While the project is in its initial planning phase, we welcome:
 
-   ```bash
-   git clone https://github.com/yourusername/club-activities-platform.git
-   cd club-activities-platform
-   ```
+- Feature suggestions
+- Architecture recommendations
+- UI/UX design ideas
+- Technical stack suggestions
 
-2. **Install dependencies**
+If you're interested in contributing, please:
 
-   ```bash
-   npm install
-   ```
+1. Star the repository to show your interest
+2. Open an issue to discuss your ideas
+3. Watch for updates as we begin development
 
-3. **Configure Firebase**
+## 📊 Current Status
 
-   - Create a new Firebase project
-   - Copy your Firebase configuration
-   - Create a new file `src/environments/environment.ts`:
-     ```typescript
-     export const environment = {
-       production: false,
-       firebase: {
-         apiKey: "your-api-key",
-         authDomain: "your-domain.firebaseapp.com",
-         projectId: "your-project-id",
-         storageBucket: "your-bucket.appspot.com",
-         messagingSenderId: "your-sender-id",
-         appId: "your-app-id",
-       },
-     };
-     ```
+Project is in planning phase. Initial development will begin soon.
 
-4. **Start the development server**
+## 🗺️ Initial Development Roadmap
 
-   ```bash
-   ng serve
-   ```
+### Milestone 1: Foundation
 
-5. **Open your browser**
-   Navigate to `http://localhost:4200`
+- [ ] Project setup
+- [ ] Basic architecture
+- [ ] Firebase configuration
+- [ ] Authentication implementation
 
-## 🏗️ Project Structure
+### Milestone 2: Core Features
 
-```
-src/
-├── app/
-│   ├── core/                 # Core features
-│   ├── shared/              # Shared components
-│   ├── features/            # Feature modules
-│   └── data-visualization/  # Analytics
-├── assets/
-└── environments/
-```
+- [ ] Group management
+- [ ] Basic club functionality
+- [ ] User profiles
+- [ ] Data models implementation
 
-## 🔧 Configuration
+### Milestone 3: Advanced Features
 
-### Firebase Setup
+- [ ] Rating system
+- [ ] Real-time updates
+- [ ] Data visualization
+- [ ] Sharing capabilities
 
-1. Enable Authentication with Google provider
-2. Set up Firestore Database
-3. Configure Storage rules
-4. Set up Realtime Database
-5. Deploy Firebase Functions
+## 💡 Feature Suggestions
 
-### Club Types
+Have ideas for additional features? Please open an issue with the `enhancement` label.
 
-Each club type can be configured with:
+## 📞 Contact
 
-- Required fields
-- Rating system
-- Progress tracking
-- Sharing options
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-### Coding Standards
-
-- Follow Angular style guide
-- Write meaningful commit messages
-- Include tests for new features
-- Update documentation as needed
+Project Owner: Ygor Goulart
+GitHub: [ygg-m](https://github.com/ygg-m)
 
 ## 📜 License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project will be licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details once development begins.
 
-## 🛠️ Built With
+---
 
-- [Angular 18](https://angular.io/) - The web framework
-- [Firebase](https://firebase.google.com/) - Backend and hosting
-- [Angular Material](https://material.angular.io/) - UI components
-- [NgRx](https://ngrx.io/) - State management
-- [ng2-charts](https://valor-software.com/ng2-charts/) - Charts and visualizations
+⭐ Star this repo if you're interested in following its development!
 
-## ✨ Acknowledgments
-
-- Thanks to all contributors
-- Inspired by book clubs and movie discussion groups worldwide
-- Special thanks to the Angular and Firebase teams
-
-## 📞 Support
-
-For support, please create an issue in the GitHub repository or contact the maintainers.
-
-## 🗺️ Roadmap
-
-- [ ] Mobile application
-- [ ] API for third-party integrations
-- [ ] Advanced analytics
-- [ ] Multiple language support
-- [ ] Offline support
-
-## 📊 Project Status
-
-The project is currently in active development. Check the [Projects](https://github.com/ygg-m/ika-clubs/projects) tab for current progress.
+Note: This project is currently in the planning phase. The README will be updated as development progresses.
