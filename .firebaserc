@@ -1,0 +1,16 @@
+{
+  "projects": {
+    "staging": "ika-clubs"
+  },
+  "targets": {
+    "ika-clubs": {
+      "hosting": {
+        "ikaclubs": [
+          "ika-clubs",
+          "ikaclubs"
+        ]
+      }
+    }
+  },
+  "etags": {}
+}
