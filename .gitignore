@@ -4,8 +4,8 @@
 _Merge Output
 
 # Environment files
-src/environments/*
-.env
+/src/environments/*
+!/src/environments/.gitkeep
 
 # Compiled output
 /dist
