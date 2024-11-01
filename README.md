@@ -174,4 +174,4 @@ For support, please create an issue in the GitHub repository or contact the main
 
 ## 📊 Project Status
 
-The project is currently in active development. Check the [Projects](https://github.com/yourusername/club-activities-platform/projects) tab for current progress.
+The project is currently in active development. Check the [Projects](https://github.com/ygg-m/ika-clubs/projects) tab for current progress.
