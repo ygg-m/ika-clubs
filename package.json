@@ -4,8 +4,8 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
-    "deploy": "firebase deploy --only hosting:ikaclubs",
+    "build": "ng build --configuration=production",
+    "deploy": "npm run build && firebase deploy --only hosting:ikaclubs",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
