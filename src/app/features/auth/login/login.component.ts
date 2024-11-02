@@ -1,6 +1,8 @@
 import { AsyncPipe, CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { NetworkStatusService } from '../../../core/services/network-status.service';
 import * as AuthActions from '../../../store/auth/auth.actions';
 import * as AuthSelectors from '../../../store/auth/auth.selectors';
 
@@ -16,6 +18,14 @@ import * as AuthSelectors from '../../../store/auth/auth.selectors';
         <h1 class="mb-6 text-2xl font-bold text-center">
           Welcome to IKA Clubs
         </h1>
+
+        <div
+          *ngIf="!(isOnline$ | async)"
+          class="mb-4 p-3 bg-yellow-100 text-yellow-700 rounded"
+        >
+          You're currently offline. Some features may be limited.
+        </div>
+
         <button
           (click)="login()"
           [disabled]="loading$ | async"
@@ -34,8 +44,14 @@ import * as AuthSelectors from '../../../store/auth/auth.selectors';
 export class LoginComponent {
   loading$ = this.store.select(AuthSelectors.selectAuthLoading);
   error$ = this.store.select(AuthSelectors.selectAuthError);
+  isOnline$: Observable<boolean>;
 
-  constructor(private store: Store) {}
+  constructor(
+    private store: Store,
+    private networkStatus: NetworkStatusService
+  ) {
+    this.isOnline$ = this.networkStatus.isOnline();
+  }
 
   login() {
     this.store.dispatch(AuthActions.login());
